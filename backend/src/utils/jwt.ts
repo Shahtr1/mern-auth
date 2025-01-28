@@ -36,7 +36,7 @@ export const signToken = (
   return jwt.sign(payload, secret, { ...defaults, ...signOpts });
 };
 
-export const verifyToken = <TPayload extends Object = AccessTokenPayload>(
+export const verifyToken = <TPayload extends object = AccessTokenPayload>(
   token: string,
   options?: VerifyOptions & { secret: string },
 ) => {
@@ -46,8 +46,8 @@ export const verifyToken = <TPayload extends Object = AccessTokenPayload>(
       ...defaults,
       ...verifyOpts,
     }) as TPayload;
-    return { payload };
+    return { payload, error: null };
   } catch (error: any) {
-    return { error: error.message };
+    return { error: error.message, payload: null };
   }
 };
