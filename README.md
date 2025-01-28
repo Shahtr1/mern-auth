@@ -1,1 +1,1 @@
-# jknoorulquranacademy
+# Mern Auth with Typescript
