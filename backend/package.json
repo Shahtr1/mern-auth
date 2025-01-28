@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --files src/index.ts index.d.ts",
+    "backend": "ts-node-dev --files src/index.ts index.d.ts",
     "build": "tsc && node copy-file.js",
     "start": "node index.js"
   },
