@@ -1,5 +1,5 @@
 import catchErrors from "../utils/catchErrors";
-import { assertUserAndSession } from "../utils/auth";
+import { assertUserAndSession } from "../utils/assertUserRoleSession";
 import SessionModel from "../models/session.model";
 import { NOT_FOUND, OK } from "../constants/http";
 import { z } from "zod";

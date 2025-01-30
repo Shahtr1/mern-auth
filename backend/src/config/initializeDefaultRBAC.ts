@@ -28,6 +28,7 @@ const initializeDefaultRBAC = async () => {
       admin = await UserModel.create({
         email: ADMIN_EMAIL,
         password: ADMIN_PASSWORD,
+        verified: true,
       });
     }
     const adminId = admin._id;

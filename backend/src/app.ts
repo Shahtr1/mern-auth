@@ -5,9 +5,10 @@ import cookieParser from "cookie-parser";
 import errorHandler from "./middleware/errorHandler";
 import { OK } from "./constants/http";
 import authRoutes from "./routes/auth.route";
-import authenticate from "./middleware/authenticate";
 import userRoutes from "./routes/user.route";
 import sessionRoutes from "./routes/session.route";
+import adminRoutes from "./routes/admin.route";
+import authenticate from "./middleware/authenticate";
 
 const app = express();
 
@@ -28,9 +29,12 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 
-// protected routes
-app.use("/user", authenticate, userRoutes);
-app.use("/sessions", authenticate, sessionRoutes);
+// admin routes
+app.use("/admin", authenticate(true), adminRoutes);
+
+// user routes
+app.use("/user", authenticate(), userRoutes);
+app.use("/sessions", authenticate(), sessionRoutes);
 
 app.use(errorHandler);
 

@@ -30,6 +30,9 @@ import {
 } from "../utils/emailTemplates";
 import { APP_ORIGIN } from "../constants/env";
 import { hashValue } from "../utils/bcrypt";
+import RoleModel, { RoleDocument } from "../models/role.model";
+import RoleType from "../constants/roleType";
+import UserRoleModel from "../models/user-role.model";
 
 export type CreateAccountParams = {
   email: string;
@@ -47,10 +50,23 @@ export const createAccount = async (data: CreateAccountParams) => {
     password: data.password,
   });
 
+  let userRole = await RoleModel.findOne({ type: RoleType.User });
+  if (!userRole) {
+    userRole = await RoleModel.create({
+      type: RoleType.User,
+      description: "This is the role assigned to user",
+    });
+  }
+
   const userId = user._id;
 
+  await UserRoleModel.create({
+    userId,
+    roleId: userRole._id,
+  });
+
   const verificationCode = await VerificationCodeModel.create({
-    userId: userId,
+    userId,
     type: VerificationCodeType.EmailVerification,
     expiresAt: oneYearFromNow(),
   });
@@ -75,7 +91,11 @@ export const createAccount = async (data: CreateAccountParams) => {
     refreshTokenSignOptions,
   );
 
-  const accessToken = signToken({ userId: userId, sessionId: session._id });
+  const accessToken = signToken({
+    userId: userId,
+    role: RoleType.User,
+    sessionId: session._id,
+  });
 
   return { user: user.omitPassword(), accessToken, refreshToken };
 };
@@ -106,7 +126,23 @@ export const loginUser = async ({
 
   const refreshToken = signToken(sessionInfo, refreshTokenSignOptions);
 
-  const accessToken = signToken({ userId: user._id, ...sessionInfo });
+  const userRole = await UserRoleModel.findOne({
+    userId,
+  }).populate<{ roleId: RoleDocument }>("roleId");
+
+  appAssert(
+    userRole?.roleId,
+    NOT_FOUND,
+    "User is not mapped to a role or role not found",
+  );
+
+  const role = userRole.roleId;
+
+  const accessToken = signToken({
+    userId: user._id,
+    role: role.type,
+    ...sessionInfo,
+  });
 
   return { user: user.omitPassword(), accessToken, refreshToken };
 };
@@ -136,8 +172,22 @@ export const refreshUserAccessToken = async (refreshToken: string) => {
     ? signToken({ sessionId: session._id }, refreshTokenSignOptions)
     : undefined;
 
+  const userId = session.userId;
+
+  const userRole = await UserRoleModel.findOne({
+    userId,
+  }).populate<{ roleId: RoleDocument }>("roleId");
+
+  appAssert(
+    userRole?.roleId,
+    NOT_FOUND,
+    "User is not mapped to a role or role not found",
+  );
+
+  const role = userRole.roleId;
   const accessToken = signToken({
-    userId: session.userId,
+    userId,
+    role: role.type,
     sessionId: session._id,
   });
 
