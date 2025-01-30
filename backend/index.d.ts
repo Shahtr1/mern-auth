@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import mongoose from "mongoose";
 
 declare global {

@@ -16,4 +16,4 @@ const initServer = async () => {
   });
 };
 
-initServer();
+initServer().then();

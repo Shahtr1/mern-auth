@@ -4,7 +4,7 @@ import SessionModel from "../models/session.model";
 import { NOT_FOUND, OK } from "../constants/http";
 import { z } from "zod";
 import appAssert from "../utils/appAssert";
-import UserModel, { UserDocument } from "../models/user.model";
+import { UserDocument } from "../models/user.model";
 
 export const getSessionsHandler = catchErrors(async (req, res) => {
   assertUserAndSession(req);

@@ -6,7 +6,6 @@ import errorHandler from "./middleware/errorHandler";
 import { OK } from "./constants/http";
 import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
-import sessionRoutes from "./routes/session.route";
 import adminRoutes from "./routes/admin.route";
 import authenticate from "./middleware/authenticate";
 
