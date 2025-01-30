@@ -1,7 +1,7 @@
 import useAuth from "../hooks/useAuth.js";
 import { Alert, AlertIcon, Center, Heading, Text } from "@chakra-ui/react";
 
-export const Profile = () => {
+export const Dashboard = () => {
   const { user } = useAuth();
   const { email, verified, createdAt } = user;
   return (

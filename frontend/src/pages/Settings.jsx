@@ -6,7 +6,7 @@ export const Settings = () => {
   const { sessions, isPending, isSuccess, isError } = useSessions();
   return (
     <Container mt={16}>
-      <Heading mb={6}>My Sessions</Heading>
+      <Heading mb={6}>Sessions</Heading>
       {isPending && <Spinner />}
       {isError && <Text color="red.400">Failed to get sessions.</Text>}
       {isSuccess && (

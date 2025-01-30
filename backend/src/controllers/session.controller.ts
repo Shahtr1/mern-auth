@@ -20,18 +20,14 @@ export const getSessionsHandler = catchErrors(async (req, res) => {
     .lean();
 
   const transformedSessions = sessions.map((session) => ({
-    _id: session._id,
+    _id: session._id.toString(),
     userAgent: session.userAgent,
     createdAt: session.createdAt,
     email: session.userId?.email || "",
+    isCurrent: session._id.toString() === req.sessionId!.toString(),
   }));
 
-  return res.status(OK).json(
-    sessions.map((session) => ({
-      ...transformedSessions,
-      ...(session.id === req.sessionId && { isCurrent: true }),
-    })),
-  );
+  return res.status(OK).json(transformedSessions);
 });
 
 export const deleteSessionHandler = catchErrors(async (req, res) => {
@@ -40,7 +36,6 @@ export const deleteSessionHandler = catchErrors(async (req, res) => {
   const sessionId = z.string().parse(req.params.id);
   const deleted = await SessionModel.findOneAndDelete({
     _id: sessionId,
-    userId: req.userId,
   });
 
   appAssert(deleted, NOT_FOUND, "Session not found");

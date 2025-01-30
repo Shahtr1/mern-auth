@@ -1,11 +1,11 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import VerifyEmail from "./pages/VerifyEmail.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import { ResetPassword } from "./pages/ResetPassword.jsx";
 import { AppContainer } from "./components/AppContainer.jsx";
-import { Profile } from "./pages/Profile.jsx";
+import { Dashboard } from "./pages/Dashboard.jsx";
 import { Settings } from "./pages/Settings.jsx";
 import { setNavigate } from "./lib/navigation.js";
 
@@ -15,8 +15,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<AppContainer />}>
-        <Route index element={<Profile />}></Route>
-        <Route path="settings" element={<Settings />}></Route>
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
