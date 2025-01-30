@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import RoleType from "../constants/roleType";
 
 export interface UserRoleDocument extends mongoose.Document {
   userId: mongoose.Types.ObjectId;
