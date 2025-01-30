@@ -34,7 +34,6 @@ app.use("/admin", authenticate(true), adminRoutes);
 
 // user routes
 app.use("/user", authenticate(), userRoutes);
-app.use("/sessions", authenticate(), sessionRoutes);
 
 app.use(errorHandler);
 

@@ -4,22 +4,31 @@ import SessionModel from "../models/session.model";
 import { NOT_FOUND, OK } from "../constants/http";
 import { z } from "zod";
 import appAssert from "../utils/appAssert";
+import UserModel, { UserDocument } from "../models/user.model";
 
 export const getSessionsHandler = catchErrors(async (req, res) => {
   assertUserAndSession(req);
 
   const sessions = await SessionModel.find(
     {
-      userId: req.userId,
       expiresAt: { $gt: new Date() },
     },
     { _id: 1, userAgent: 1, createdAt: 1 },
     { sort: { createdAt: -1 } },
-  );
+  )
+    .populate<{ userId: UserDocument | undefined }>("userId", "email")
+    .lean();
+
+  const transformedSessions = sessions.map((session) => ({
+    _id: session._id,
+    userAgent: session.userAgent,
+    createdAt: session.createdAt,
+    email: session.userId?.email || "",
+  }));
 
   return res.status(OK).json(
     sessions.map((session) => ({
-      ...session.toObject(),
+      ...transformedSessions,
       ...(session.id === req.sessionId && { isCurrent: true }),
     })),
   );
