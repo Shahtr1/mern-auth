@@ -11,7 +11,7 @@ export const AppContainer = () => {
     </Center>
   ) : user ? (
     <Box p={4} minH="100vh">
-      <UserMenu />
+      <UserMenu role={user?.role} />
       <Outlet />
     </Box>
   ) : (

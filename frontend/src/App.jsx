@@ -6,8 +6,9 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import { ResetPassword } from "./pages/ResetPassword.jsx";
 import { AppContainer } from "./components/AppContainer.jsx";
 import { Dashboard } from "./pages/Dashboard.jsx";
-import { Settings } from "./pages/Settings.jsx";
 import { setNavigate } from "./lib/navigation.js";
+import { PrivateRoute } from "./components/PrivateRoute.jsx";
+import { Settings } from "./pages/Settings.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -17,7 +18,12 @@ function App() {
       <Route path="/" element={<AppContainer />}>
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="settings" element={<Settings />} />
+        <Route
+          path="settings"
+          element={
+            <PrivateRoute Component={Settings} allowedRoutes={["admin"]} />
+          }
+        />
       </Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>

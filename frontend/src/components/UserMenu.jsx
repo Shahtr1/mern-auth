@@ -4,7 +4,8 @@ import { useMutation } from "@tanstack/react-query";
 import { logout } from "../lib/api.js";
 import queryClient from "../config/queryClient.js";
 
-export const UserMenu = () => {
+export const UserMenu = (props) => {
+  const { role } = props;
   const navigate = useNavigate();
 
   const { mutate: signOut } = useMutation({
@@ -21,7 +22,9 @@ export const UserMenu = () => {
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => navigate("/")}>Profile</MenuItem>
-        <MenuItem onClick={() => navigate("/settings")}>Settings</MenuItem>
+        {role === "admin" && (
+          <MenuItem onClick={() => navigate("/settings")}>Settings</MenuItem>
+        )}
         <MenuItem onClick={signOut}>Logout</MenuItem>
       </MenuList>
     </Menu>
