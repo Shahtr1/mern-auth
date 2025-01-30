@@ -90,13 +90,21 @@ mern-auth-main/
 
 ## API Endpoints
 
-| Endpoint                 | Method | Description           |
-|--------------------------|--------|-----------------------|
-| `/api/auth/register`     | POST   | Register a new user   |
-| `/api/auth/login`        | POST   | Login user            |
-| `/api/auth/verify-email` | POST   | Verify email          |
-| `/api/users`             | GET    | Get all users (Admin) |
-| `/api/roles`             | GET    | Fetch roles           |
+| Endpoint                   | Method | Description                                                       |
+|----------------------------|--------|-------------------------------------------------------------------|
+| `/auth/register`           | POST   | Register a new user                                               |
+| `/auth/login`              | POST   | Login user                                                        |
+| `/auth/refresh`            | GET    | Refreshes access token if refresh token is present or not expired |
+| `/auth/logout`             | GET    | Logs out the user                                                 |
+| `/auth/email/verify/:code` | GET    | Verify email                                                      |
+| `/auth/password/forgot`    | POST   | Forgot password mail                                              |
+| `/auth/password/reset`     | POST   | Reset Password link                                               |
+|                            |        |                                                                   |
+| `/admin/dashboard`         | GET    | Admin Dashboard                                                   |
+| `/admin/sessions`          | GET    | Manage sessions of users                                          |
+| `/admin/sessions/:id`      | DELETE | Manage sessions of users                                          |
+|                            |        |                                                                   |
+| `/user`                    | GET    | Get Logged in user details                                        |
 
 ## Technologies Used
 
