@@ -16,7 +16,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { sendPasswordResetEmail } from "../lib/api.js";
+import { sendPasswordResetEmail } from "../lib/services/api.js";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");

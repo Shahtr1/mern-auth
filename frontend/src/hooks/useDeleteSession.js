@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteSession } from "../lib/api.js";
+import { deleteSession } from "../lib/services/api.js";
 import { SESSIONS } from "./useSessions.js";
 
 const useDeleteSession = (sessionId) => {

@@ -14,7 +14,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link as ChakraLink } from "@chakra-ui/react";
-import { register } from "../lib/api.js";
+import { register } from "../lib/services/api.js";
 
 const Register = () => {
   const navigate = useNavigate();

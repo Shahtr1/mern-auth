@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { resetPassword } from "../lib/api.js";
+import { resetPassword } from "../lib/services/api.js";
 
 export const ResetPasswordForm = ({ code }) => {
   const [password, setPassword] = useState("");

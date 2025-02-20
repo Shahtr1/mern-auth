@@ -1,6 +1,6 @@
 import axios from "axios";
 import queryClient from "./queryClient.js";
-import { navigate } from "../lib/navigation.js";
+import { navigate } from "../lib/services/navigation.js";
 
 const options = {
   baseURL: import.meta.env.VITE_API_URL,

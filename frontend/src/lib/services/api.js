@@ -1,4 +1,4 @@
-import API from "../config/apiClient.js";
+import API from "../../config/apiClient.js";
 
 export const login = async (data) => API.post("/auth/login", data);
 export const logout = async () => API.get("/auth/logout");

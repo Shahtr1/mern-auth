@@ -1,8 +1,8 @@
 import { Avatar, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { logout } from "../lib/api.js";
-import queryClient from "../config/queryClient.js";
+import { logout } from "../../lib/services/api.js";
+import queryClient from "../../config/queryClient.js";
 
 export const UserMenu = (props) => {
   const { role } = props;

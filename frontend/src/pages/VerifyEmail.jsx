@@ -9,7 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
-import { verifyEmail } from "../lib/api.js";
+import { verifyEmail } from "../lib/services/api.js";
 import { useQuery } from "@tanstack/react-query";
 
 const VerifyEmail = () => {
