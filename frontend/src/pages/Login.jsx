@@ -42,7 +42,7 @@ const Login = () => {
         <Heading fontSize="4xl" mb={8}>
           Sign into your account
         </Heading>
-        <Box rounded="lg" bg="gray.700" boxShadow="lg" p={8}>
+        <Box rounded="lg" bg="white.700" boxShadow="lg" p={8}>
           {isError && (
             <Box mb={3} color="red.400">
               Invalid email or password

@@ -1,27 +1,25 @@
-import { baseTheme, extendTheme } from "@chakra-ui/react";
-import buttonTheme from "./buttonTheme";
+import { extendTheme } from "@chakra-ui/react";
 import linkTheme from "./linkTheme";
+import { mode } from "@chakra-ui/theme-tools";
 
 const config = {
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 
-const colors = {
-  theme: {
-    primary: baseTheme.colors.blue[500],
-    primaryDark: baseTheme.colors.blue[600],
-  },
-  text: {
-    muted: baseTheme.colors.gray[400],
-  },
+const styles = {
+  global: (props) => ({
+    body: {
+      color: mode("black", "whiteAlpha.900")(props),
+      bg: mode("white", "#101218")(props),
+    },
+  }),
 };
 
 const theme = extendTheme({
   config,
-  colors,
+  styles,
   components: {
-    Button: buttonTheme,
     Link: linkTheme,
   },
 });
