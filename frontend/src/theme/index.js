@@ -6,6 +6,7 @@ import inputTheme from "@/theme/inputTheme.js";
 import selectTheme from "@/theme/selectTheme.js";
 import radioTheme from "@/theme/radioTheme.js";
 import checkboxTheme from "@/theme/checkboxTheme.js";
+import textTheme from "@/theme/textTheme.js";
 
 const config = {
   initialColorMode: "light",
@@ -35,7 +36,7 @@ const colors = {
     900: "#072423",
   },
   text: {
-    primary: "#606770",
+    primary: "#444648",
     secondary: "#90949C",
   },
 };
@@ -47,6 +48,7 @@ const components = {
   Select: selectTheme,
   Radio: radioTheme,
   Checkbox: checkboxTheme,
+  Text: textTheme,
 };
 
 const theme = extendTheme({
