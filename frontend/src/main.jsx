@@ -7,6 +7,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "./config/queryClient.js";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme/index.js";
+import "./App.scss";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
