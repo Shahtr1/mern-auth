@@ -1,14 +1,14 @@
 import {
   Box,
+  Button,
   Container,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
-  Stack,
   Link as ChakraLink,
-  Button,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -56,6 +56,7 @@ const Login = () => {
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address"
               />
             </FormControl>
             <FormControl id="password">
@@ -67,6 +68,7 @@ const Login = () => {
                 onKeyDown={(e) =>
                   e.key === "Enter" && signIn({ email, password })
                 }
+                placeholder="Password"
               />
             </FormControl>
 
