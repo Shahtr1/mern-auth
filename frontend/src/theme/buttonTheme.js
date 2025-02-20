@@ -3,7 +3,7 @@ import { mode } from "@chakra-ui/theme-tools";
 const buttonTheme = {
   baseStyle: {
     fontWeight: "bold",
-    borderRadius: "sm",
+    borderRadius: "md",
   },
   variants: {
     solid: (props) => ({
