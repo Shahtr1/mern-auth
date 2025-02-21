@@ -15,7 +15,7 @@ const inputTheme = {
         },
         _focus: {
           borderColor: "brand.500",
-          boxShadow: mode("0 0 0 1px brand.500", "0 0 0 1px brand.400")(props),
+          boxShadow: "none",
         },
       },
     }),
@@ -29,6 +29,7 @@ const inputTheme = {
         _focus: {
           bg: mode("white", "gray.800")(props),
           borderColor: "brand.500",
+          boxShadow: "none",
         },
       },
     }),

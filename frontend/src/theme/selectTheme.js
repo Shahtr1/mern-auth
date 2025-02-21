@@ -15,8 +15,11 @@ const selectTheme = {
         },
         _focus: {
           borderColor: "brand.500",
-          boxShadow: mode("0 0 0 1px brand.500", "0 0 0 1px brand.400")(props),
+          boxShadow: "none",
         },
+      },
+      icon: {
+        color: mode("gray.600", "whiteAlpha.700")(props),
       },
     }),
     filled: (props) => ({
@@ -29,6 +32,7 @@ const selectTheme = {
         _focus: {
           bg: mode("white", "gray.800")(props),
           borderColor: "brand.500",
+          boxShadow: "none",
         },
       },
     }),
