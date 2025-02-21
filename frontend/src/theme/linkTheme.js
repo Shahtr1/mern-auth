@@ -9,6 +9,13 @@ const linkTheme = {
       textDecoration: "underline",
       color: mode("brand.600", "brand.400")(props),
     },
+    _focus: {
+      outline: "none",
+      boxShadow: mode("0 0 0 2px brand.200", "0 0 0 2px brand.500")(props),
+    },
+    _active: {
+      color: mode("brand.700", "brand.500")(props),
+    },
   }),
   defaultProps: {
     variant: "default",

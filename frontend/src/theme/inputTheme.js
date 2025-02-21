@@ -7,22 +7,27 @@ const inputTheme = {
   variants: {
     outline: (props) => ({
       field: {
-        borderColor: mode("gray.300", "gray.600")(props),
-        color: "text.primary",
-        _placeholder: { color: "text.secondary" },
+        borderColor: mode("gray.300", "whiteAlpha.500")(props),
+        bg: mode("white", "gray.800")(props),
+        color: mode("text.primary", "whiteAlpha.900")(props),
+        _placeholder: {
+          color: mode("text.secondary", "whiteAlpha.600")(props),
+        },
         _focus: {
           borderColor: "brand.500",
-          boxShadow: "0 0 0 1px brand.500",
+          boxShadow: mode("0 0 0 1px brand.500", "0 0 0 1px brand.400")(props),
         },
       },
     }),
     filled: (props) => ({
       field: {
         bg: mode("gray.100", "gray.700")(props),
-        color: "text.primary",
-        _placeholder: { color: "text.secondary" },
+        color: mode("text.primary", "whiteAlpha.900")(props),
+        _placeholder: {
+          color: mode("text.secondary", "whiteAlpha.600")(props),
+        },
         _focus: {
-          bg: "white",
+          bg: mode("white", "gray.800")(props),
           borderColor: "brand.500",
         },
       },
