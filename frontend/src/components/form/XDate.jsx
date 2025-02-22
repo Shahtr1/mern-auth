@@ -8,7 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
-export const XDate = ({ errorMessage, onDateChange, gap = 1, label }) => {
+export const XDate = ({
+  errorMessage,
+  onDateChange = () => {},
+  gap = 1,
+  label,
+}) => {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
