@@ -3,17 +3,15 @@ import { mode } from "@chakra-ui/theme-tools";
 const textTheme = {
   baseStyle: (props) => ({
     color: mode("text.primary", "whiteAlpha.900")(props),
-    fontWeight: "medium",
+    fontWeight: "small",
   }),
   variants: {
     heading: (props) => ({
-      fontWeight: "semibold",
       lineHeight: "short",
       color: mode("text.primary", "whiteAlpha.900")(props),
     }),
     body: (props) => ({
-      fontSize: "md",
-      fontWeight: "medium",
+      fontWeight: "small",
       color: mode("text.primary", "whiteAlpha.900")(props),
     }),
     subtle: (props) => ({

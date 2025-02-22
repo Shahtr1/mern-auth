@@ -7,6 +7,7 @@ const inputTheme = {
   variants: {
     outline: (props) => ({
       field: {
+        borderRadius: "sm",
         borderColor: mode("gray.300", "whiteAlpha.500")(props),
         bg: mode("white", "gray.800")(props),
         color: mode("text.primary", "whiteAlpha.900")(props),
@@ -21,6 +22,7 @@ const inputTheme = {
     }),
     filled: (props) => ({
       field: {
+        borderRadius: "sm",
         bg: mode("gray.100", "gray.700")(props),
         color: mode("text.primary", "whiteAlpha.900")(props),
         _placeholder: {

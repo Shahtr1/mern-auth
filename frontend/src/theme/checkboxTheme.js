@@ -19,7 +19,7 @@ const checkboxTheme = {
     },
     label: {
       fontWeight: "medium",
-      color: mode("gray.800", "whiteAlpha.900")(props),
+      color: mode("text.primary", "whiteAlpha.900")(props),
     },
   }),
 };
