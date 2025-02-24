@@ -9,6 +9,7 @@ import checkboxTheme from "@/theme/checkboxTheme.js";
 import textTheme from "@/theme/textTheme.js";
 import colors from "@/theme/colors.js";
 import formLabelTheme from "@/theme/formLabelTheme.js";
+import alertTheme from "@/theme/alertTheme.js";
 
 const config = {
   initialColorMode: "light",
@@ -26,6 +27,7 @@ const styles = {
 };
 
 const components = {
+  Alert: alertTheme,
   Link: linkTheme,
   Button: buttonTheme,
   Input: inputTheme,
